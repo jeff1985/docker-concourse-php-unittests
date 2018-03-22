@@ -1,16 +1,5 @@
 #!/usr/bin/env bash
 
-# DinD: a wrapper script which allows docker to be run inside a docker container.
-# Original version by Jerome Petazzoni <jerome@docker.com>
-# See the blog post: https://blog.docker.com/2013/09/docker-can-now-run-within-docker/
-#
-# This script should be executed inside a docker container in privileged mode
-# ('docker run --privileged', introduced in docker 0.6).
-
-# Usage: dind CMD [ARG...]
-
-# apparmor sucks and Docker needs to know that it's in a container (c) @tianon
-#export container=docker
 
 if [ -d /sys/kernel/security ] && ! mountpoint -q /sys/kernel/security; then
 	mount -t securityfs none /sys/kernel/security || {
