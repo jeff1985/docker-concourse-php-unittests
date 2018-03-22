@@ -3,10 +3,7 @@ FROM ubuntu:xenial
 MAINTAINER Martins Balodis
 
 ENV DEBCONF_NONINTERACTIVE_SEEN="true" TIMEZONE="UTC" DISPLAY=":1"
-RUN locale-gen en_US.UTF-8 && locale-gen de_DE.UTF-8 && \
-    locale-gen ru_RU.UTF-8 && locale-gen es_ES.UTF-8 && \
-    locale-gen fr_FR.UTF-8
-ENV LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8"
+
 
 # database configuration
 ENV DB_HOST="localhost" DB_DATABASE="ebesuchertest" DB_USERNAME="root" DB_PASSWORD="root" DISABLE_NOTIFIER="true"
@@ -16,7 +13,10 @@ ADD fs /
 
 # install all dependencies
 RUN apt-get update && \
-apt-get install -qqy software-properties-common curl sudo && \
+apt-get install -qqy software-properties-common curl sudo locales && \
+locale-gen en_US.UTF-8 && locale-gen de_DE.UTF-8 && \
+    locale-gen ru_RU.UTF-8 && locale-gen es_ES.UTF-8 && \
+    locale-gen fr_FR.UTF-8 &&
 add-apt-repository ppa:ondrej/php && \
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && \
 apt-get update && \
@@ -63,6 +63,9 @@ rm -rf /var/lib/apt/lists/* && \
 mkdir /root/.ssh && \
 touch /root/.ssh/known_hosts && \
 ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+
+ENV LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8"
 
 # do some container configuration
 RUN /usr/local/bin/configure_container.sh
