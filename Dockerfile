@@ -15,8 +15,8 @@ ADD fs /
 RUN apt-get update && \
 apt-get install -qqy software-properties-common curl sudo locales && \
 locale-gen en_US.UTF-8 && locale-gen de_DE.UTF-8 && \
-    locale-gen ru_RU.UTF-8 && locale-gen es_ES.UTF-8 && \
-    locale-gen fr_FR.UTF-8 &&
+locale-gen ru_RU.UTF-8 && locale-gen es_ES.UTF-8 && \
+locale-gen fr_FR.UTF-8 && \
 add-apt-repository ppa:ondrej/php && \
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && \
 apt-get update && \
