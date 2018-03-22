@@ -11,6 +11,8 @@ ENV DB_HOST="localhost" DB_DATABASE="ebesuchertest" DB_USERNAME="root" DB_PASSWO
 # configuration and startup scripts
 ADD fs /
 
+ENV LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8"
+
 # install all dependencies
 RUN apt-get update && \
 apt-get install -qqy software-properties-common curl sudo locales && \
@@ -65,7 +67,7 @@ touch /root/.ssh/known_hosts && \
 ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 
-ENV LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8"
+
 
 # do some container configuration
 RUN /usr/local/bin/configure_container.sh
