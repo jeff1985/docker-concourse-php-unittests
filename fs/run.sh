@@ -58,4 +58,4 @@ chown mysql:mysql /var/lib/mysql
 #chown mongodb:mongodb /var/lib/mongodb
 
 # Start supervisord and services
-/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf 
