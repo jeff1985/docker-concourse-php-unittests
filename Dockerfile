@@ -27,7 +27,7 @@ apt-get update && \
 /bin/bash -c "debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password $DB_PASSWORD'" && \
 DEBIAN_FRONTEND=noninteractive apt-get -y install  wget \
 nano mysql-client \
-php7.1-mcrypt php7.1-cli php7.1-mysql php7.1-intl \
+php7.1-mcrypt php-apcu php-apcu-bc php7.1-cli php7.1-mysql php7.1-intl \
 php7.1-fpm php7.1-mbstring php7.1-curl php7.1-bcmath \
 php7.1-zip php7.1-bz2 php7.1-mbstring php7.1-xsl php7.1-gd php7.1-sockets \
 php7.1-ldap php7.1-gettext php7.1-mysql php7.1-simplexml php7.1-soap php7.1-xml \
